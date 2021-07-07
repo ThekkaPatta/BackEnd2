@@ -23,6 +23,14 @@ const Register = mongoose.model('Register',{
     },
     Uimage:{
         type: String
+    },
+    Citzimage:{
+        type: String,
+        required:true
+    },
+    Citznumber:{
+        type: String,
+        required:true
     }
 })
 module.exports = Register;
