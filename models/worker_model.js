@@ -1,34 +1,42 @@
 const mongoose = require('mongoose'); //third party
 
 const Register = mongoose.model('Register',{
-    UFullName: {
+    FullName: {
         type:String,
         required : true
     },
-    UAddress: {
+    Address: {
         type: String,
         required: true
     },
-    UPhoneNo:{
+    PhoneNo:{
         type : String,
         required: true
     },
-    UUsername:{
+    Skills:{
+        type:String,
+        required:true
+    },
+    Username:{
         type : String,
         required: true
     },
-    UPassword:{
+    Password:{
         type : String,
         required:true
     },
-    Uimage:{
+    Wimage:{
         type: String
     },
-    UCitzimage:{
+    WCitzimage:{
         type: String,
         required:true
     },
-    UCitznumber:{
+    Citznumber:{
+        type: String,
+        required:true
+    },
+    Certifyimage:{
         type: String,
         required:true
     }
