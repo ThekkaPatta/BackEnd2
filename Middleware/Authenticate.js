@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/Artist_model');
+const User = require('../models/user_model');
 
 
 module.exports.verifyUser = function (req, res, next) {

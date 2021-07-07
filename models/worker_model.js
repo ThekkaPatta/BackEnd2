@@ -1,27 +1,27 @@
 const mongoose = require('mongoose'); //third party
 
-const Register = mongoose.model('Register',{
-    FullName: {
+const Worker = mongoose.model('Worker',{
+    WFullName: {
         type:String,
         required : true
     },
-    Address: {
+    WAddress: {
         type: String,
         required: true
     },
-    PhoneNo:{
+    WPhoneNo:{
         type : String,
         required: true
     },
-    Skills:{
+    WSkills:{
         type:String,
         required:true
     },
-    Username:{
+    WUsername:{
         type : String,
         required: true
     },
-    Password:{
+    WPassword:{
         type : String,
         required:true
     },
@@ -32,7 +32,7 @@ const Register = mongoose.model('Register',{
         type: String,
         required:true
     },
-    Citznumber:{
+    WCitznumber:{
         type: String,
         required:true
     },
@@ -41,4 +41,4 @@ const Register = mongoose.model('Register',{
         required:true
     }
 })
-module.exports = Register;
+module.exports = Worker;

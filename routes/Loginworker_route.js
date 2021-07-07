@@ -1,13 +1,13 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const Register = require('../models/register_model');
+const Worker = require('../models/worker_model');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const upload = require('../Middleware/Upload');
 const auth = require('../Middleware/Authenticate')
 
-router.post('/Wregister/insert',  upload.single('Uimage','Citzimage','Certifyimage'), function (req, res) {
+router.post('/worker/insert',  upload.single('Wimage','WCitzimage','Certifyimage'), function (req, res) {
     console.log(req.body)
     const errors = validationResult(req);
 
@@ -21,14 +21,13 @@ router.post('/Wregister/insert',  upload.single('Uimage','Citzimage','Certifyima
         const WUsername = req.body.WUsername;
         const WPassword = req.body.WPassword;
         const WCitznumber = req.body.WCitznumber;
-        //fdsfsdkfjlkfjsdfklsjaflkfsdlkfjsaldkfsdlkfksdflksdjfakl
         const Wimage = req.file.path;
         const WCitzimage = req.file.path;
         const Certifyimage = req.file.path;
         // console.log(us);
         // console.log(add); 
         bcryptjs.hash(Password, 10, function (err, hash) {
-            const data = new Register({
+            const data = new Worker({
                 WFullName: WFullName,
                 WAddress: WAddress,
                 WPhoneNo: WPhoneNo,
@@ -38,8 +37,8 @@ router.post('/Wregister/insert',  upload.single('Uimage','Citzimage','Certifyima
                 WCitznumber: WCitznumber,
                 Wimage:"/Images/workerimage" + req.file.filename,
                 WCitzimage:"/Images/citzensipimage" + req.file.filename,
-                Certifyimage ="/Images/certificationimage"+ req.file.path,
-            });
+                Certifyimage :"/Images/certificationimage" + req.file.filename
+            })
             data.save()
                 .then(function (result) {
                     res.status(201).json({ message: "Registration success !!!!" })
