@@ -16,7 +16,7 @@ const Register = mongoose.model('Register',{
     // Username:{
     //     type : String,
     //     required: true
-    },
+    // },
     Password:{
         type : String,
         required:true
