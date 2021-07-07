@@ -9,13 +9,13 @@ const Register = mongoose.model('Register',{
         type: String,
         required: true
     },
-    PhoneNo:{
-        type : String,
-        required: true
-    },
-    Username:{
-        type : String,
-        required: true
+    // PhoneNo:{
+    //     type : String,
+    //     required: true
+    // },
+    // Username:{
+    //     type : String,
+    //     required: true
     },
     Password:{
         type : String,
