@@ -1,7 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const Register = require('../models/register_model');
+const Register = require('../models/user_model');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const upload = require('../Middleware/Upload');
@@ -29,9 +29,9 @@ router.post('/uregister/insert',  upload.single('Uimage','Citzimage'), function 
                 UFullName: UFullName,
                 UAddress: UAddress,
                 UPhoneNo: UPhoneNo,
-                UCitznumber = UCitznumber,
                 UUsername: UUsername,
                 UPassword: hash,
+                UCitznumber = UCitznumber,
                 Uimage:"/Images/userimage" + req.file.filename,
                 UCitzimage:"/Images/ucitizenshipimage" + req.file.filename,
             });
