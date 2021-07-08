@@ -5,10 +5,10 @@ const Work = mongoose.model('Work',{
         type: String,
         required: true
     },
-    // Tags:{
-    //     type : String,
-    //     required: true
-    // },
+    Tags:{
+        type : String,
+        required: true
+    },
     PhoneNo:{
         type : String,
         required: true

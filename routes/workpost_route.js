@@ -14,7 +14,7 @@ router.post('/work/post',function (req, res) {
     if (errors.isEmpty) {
         //valid
         const Username = req.body.Username;
-        // const Tags = req.body.Tags;
+        const Tags = req.body.Tags;
         const PhoneNo = req.body.PhoneNo;
         const Workdescription = req.body.Workdescription;
         // const Wimage = req.file.path;
@@ -22,7 +22,7 @@ router.post('/work/post',function (req, res) {
         // console.log(add); 
             const data = new Work({
                 Username: Username,
-                // Tags: Tags,
+                Tags: Tags,
                 PhoneNo: PhoneNo,
                 Workdescription: Workdescription,
                 // Wimage:"/Images/" + req.file.filename,
