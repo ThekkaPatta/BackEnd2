@@ -54,17 +54,17 @@ router.post('/user/insert', /* upload.single('Uimage','Citzimage')*/ function (r
 
 //Login System .........................
 router.post('/user/login', function (req, res) {
-    const Username1 = req.body.Username;
-    const Password1 = req.body.Password;
+    const Username1 = req.body.UUsername;
+    const Password1 = req.body.UPassword;
     console.log(Username1, Password1)
-    User.findOne({ Username: Username1 })
+    User.findOne({ UUsername: Username1 })
         .then(function (userData1) {
             //if username doesnot exist
             if (userData1 === null) {
                 return res.status(401).json({ error: "Invalid Credentials111 !! " })
             }
             // if username exists
-            bcryptjs.compare(Password1, userData1.Password, function (err, result) {
+            bcryptjs.compare(Password1, userData1.UPassword, function (err, result) {
                 if (result === false) {
                     //password worng
                     return res.status(401).json({ error: "Invalid Credentials !!" })
