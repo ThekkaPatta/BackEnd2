@@ -21,13 +21,15 @@ const User = mongoose.model('User',{
         type : String,
         required:true
     },
-    Uimage:{
-        type: String
-    },
-    UCitzimage:{
-        type: String,
-        required:true
-    },
+
+    // Uimage:{
+    //     type: String
+    // },
+    // UCitzimage:{
+    //     type: String,
+    //     required:true
+    // },
+    
     UCitznumber:{
         type: String,
         required:true
