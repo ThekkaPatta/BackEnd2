@@ -24,21 +24,22 @@ const Worker = mongoose.model('Worker',{
     WPassword:{
         type : String,
         required:true
-    },
-    Wimage:{
-        type: String
-    },
-    WCitzimage:{
-        type: String,
-        required:true
-    },
-    WCitznumber:{
-        type: String,
-        required:true
-    },
-    Certifyimage:{
-        type: String,
-        required:true
     }
+
+    // Wimage:{
+    //     type: String
+    // },
+    // WCitzimage:{
+    //     type: String,
+    //     required:true
+    // },
+    // WCitznumber:{
+    //     type: String,
+    //     required:true
+    // },
+    // Certifyimage:{
+    //     type: String,
+    //     required:true
+    // }
 })
 module.exports = Worker;
