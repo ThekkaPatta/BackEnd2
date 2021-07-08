@@ -1,13 +1,12 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const Register = require('../models/work_model');
+const Work = require('../models/work_model');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
-const upload = require('../Middleware/Upload');
-// const auth = require('../Middleware/Authenticate')
 
-router.post('/work/post',  upload.single('Wimage'), function (req, res) {
+
+router.post('/work/post',function (req, res) {
     console.log(req.body)
     const errors = validationResult(req);
 
@@ -15,18 +14,18 @@ router.post('/work/post',  upload.single('Wimage'), function (req, res) {
     if (errors.isEmpty) {
         //valid
         const Username = req.body.Username;
-        const Tags = req.body.Tags;
-        const Phoneno = req.body.Phoneno;
-        const Workdescrioption = req.body.Workdescription;
-        const Wimage = req.file.path;
+        // const Tags = req.body.Tags;
+        const PhoneNo = req.body.PhoneNo;
+        const Workdescription = req.body.Workdescription;
+        // const Wimage = req.file.path;
         // console.log(us);
         // console.log(add); 
-            const data = new Register({
+            const data = new Work({
                 Username: Username,
-                Tags: Tags,
-                Phoneno: Phoneno,
+                // Tags: Tags,
+                PhoneNo: PhoneNo,
                 Workdescription: Workdescription,
-                Wimage:"/Images/" + req.file.filename,
+                // Wimage:"/Images/" + req.file.filename,
             });
             data.save()
                 .then(function (result) {
@@ -42,4 +41,4 @@ router.post('/work/post',  upload.single('Wimage'), function (req, res) {
         res.status(400).json(errors.array());
     }
 })
-
+module.exports = router;

@@ -1,35 +1,39 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const bcryptjs = require('bcryptjs');
-const Register = require('../models/register_model');
+const User = require('../models/user_model');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 const upload = require('../Middleware/Upload');
 const auth = require('../Middleware/Authenticate')
 
-router.post('/register/insert',  upload.single('Uimage'), function (req, res) {
+router.post('/user/insert', /* upload.single('Uimage','Citzimage')*/ function (req, res) {
     console.log(req.body)
     const errors = validationResult(req);
 
     // res.send(errors.array());
     if (errors.isEmpty) {
         //valid
-        const FullName = req.body.FullName;
-        const Address = req.body.Address;
-        const PhoneNo = req.body.PhoneNo;
-        const Username = req.body.Username;
-        const Password = req.body.Password;
-        const Uimage = req.file.path;
+        const UFullName = req.body.UFullName;
+        const UAddress = req.body.UAddress;
+        const UPhoneNo = req.body.UPhoneNo;
+        const UUsername = req.body.UUsername;
+        const UPassword = req.body.UPassword;
+        const UCitznumber = req.body.UCitznumber;
+        // const Uimage = req.file.path;
+        // const UCitzimage = req.file.path;
         // console.log(us);
         // console.log(add); 
-        bcryptjs.hash(Password, 10, function (err, hash) {
-            const data = new Register({
-                FullName: FullName,
-                Address: Address,
-                PhoneNo: PhoneNo,
-                Username: Username,
-                Password: hash,
-                Uimage:"/Images/" + req.file.filename,
+        bcryptjs.hash(UPassword, 10, function (err, hash) {
+            const data = new User({
+                UFullName: UFullName,
+                UAddress: UAddress,
+                UPhoneNo: UPhoneNo,
+                UCitznumber : UCitznumber,
+                UUsername: UUsername,
+                UPassword: hash,
+                // Uimage:"/Userimage" + req.file.filename,
+                // UCitzimage:"/Usercitzimage" + req.file.filename
             });
             data.save()
                 .then(function (result) {
@@ -47,19 +51,20 @@ router.post('/register/insert',  upload.single('Uimage'), function (req, res) {
     }
 })
 
+
 //Login System .........................
 router.post('/user/login', function (req, res) {
-    const Username1 = req.body.Username;
-    const Password1 = req.body.Password;
+    const Username1 = req.body.UUsername;
+    const Password1 = req.body.UPassword;
     console.log(Username1, Password1)
-    Register.findOne({ Username: Username1 })
+    User.findOne({ UUsername: Username1 })
         .then(function (userData1) {
             //if username doesnot exist
             if (userData1 === null) {
                 return res.status(401).json({ error: "Invalid Credentials111 !! " })
             }
             // if username exists
-            bcryptjs.compare(Password1, userData1.Password, function (err, result) {
+            bcryptjs.compare(Password1, userData1.UPassword, function (err, result) {
                 if (result === false) {
                     //password worng
                     return res.status(401).json({ error: "Invalid Credentials !!" })
@@ -80,21 +85,21 @@ router.post('/user/login', function (req, res) {
         })
 })
 
-router.get('/register/show', function (req, res) {
+router.get('/user/show', function (req, res) {
     // console.log("this is for showing data")
     // res.send("test show")
-    Register.find().then(function (data) {
+    User.find().then(function (data) {
         // console.log(data);
         res.send(data);
     })
 })
 
 
-router.get('/register/single/:id', function(req,res){
+router.get('/user/single/:id', function(req,res){
     // console.log("this is for showing data")
     // res.send("test show")
     //console.log(req.body)
-    Register.findOne({_id : req.params.id})
+    User.findOne({_id : req.params.id})
     .then(function(data){
     console.log(data);
         res.status(200).json(data);
@@ -105,16 +110,16 @@ router.get('/register/single/:id', function(req,res){
 })
 
 // for delete
-router.delete('/register/delete/:id', auth.verifyUser, function (req, res) {
+router.delete('/user/delete/:id', auth.verifyUser, function (req, res) {
     //delete code
     const id = req.params.id;
-    Register.deleteOne({ _id: id }).then(function () {
+    User.deleteOne({ _id: id }).then(function () {
         res.send("Deleted !")
     })
 
 })
 // for update
-router.post('/register/update/:_id', function (req, res) {
+router.post('/user/update/:_id', function (req, res) {
     console.log(req.body)
     const _id = req.params._id;
     const FullName = req.body.FullName;
@@ -122,7 +127,7 @@ router.post('/register/update/:_id', function (req, res) {
     const PhoneNo = req.body.PhoneNo;
     const Username = req.body.Username;
     const Password = req.body.Password;
-    Register.updateOne({ _id: _id }, { FullName:FullName, Address:Address,PhoneNo:PhoneNo,Username: Username,Password:Password })
+    User.updateOne({ _id: _id }, { FullName:FullName, Address:Address,PhoneNo:PhoneNo,Username: Username,Password:Password })
     .then(function () {
         res.status(200).json({message : true})
     })

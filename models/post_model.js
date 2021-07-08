@@ -9,20 +9,28 @@ const Register = mongoose.model('Register',{
         type: String,
         required: true
     },
-    PhoneNo:{
-        type : String,
-        required: true
-    },
-    Username:{
-        type : String,
-        required: true
-    },
+    // PhoneNo:{
+    //     type : String,
+    //     required: true
+    // },
+    // Username:{
+    //     type : String,
+    //     required: true
+    // },
     Password:{
         type : String,
         required:true
     },
     Uimage:{
         type: String
+    },
+    Citzimage:{
+        type: String,
+        required:true
+    },
+    Citznumber:{
+        type: String,
+        required:true
     }
 })
 module.exports = Register;
