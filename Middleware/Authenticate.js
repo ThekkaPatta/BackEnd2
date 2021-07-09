@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/Artist_model');
-
+const User = require('../models/user_model');
 
 module.exports.verifyUser = function (req, res, next) {
     try {
@@ -8,7 +7,7 @@ module.exports.verifyUser = function (req, res, next) {
         // console.log(token);
         const data = jwt.verify(token, 'anysecretkey');
         console.log(data.userId);
-        User.findOne({ _id: data.userId })
+        User.findOne({ _id: data._id })
             .then(function (result) {
                 req.user = result;
                 next();
@@ -21,7 +20,4 @@ module.exports.verifyUser = function (req, res, next) {
 
         res.status(401).json({ error: e })
     }
-
-
-
 }

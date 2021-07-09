@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); //third party
 
-const Register = mongoose.model('Register',{
+const User = mongoose.model('User',{
     UFullName: {
         type:String,
         required : true
@@ -22,15 +22,7 @@ const Register = mongoose.model('Register',{
         required:true
     },
     Uimage:{
-        type: String
-    },
-    UCitzimage:{
         type: String,
-        required:true
-    },
-    UCitznumber:{
-        type: String,
-        required:true
     }
 })
-module.exports = Register;
+module.exports = User;
