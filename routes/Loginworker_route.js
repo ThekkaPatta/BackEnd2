@@ -20,9 +20,7 @@ router.post('/worker/insert',  upload.single('Wimage','WCitzimage','Certifyimage
         const WSkills = req.body.WSkills;
         const WUsername = req.body.WUsername;
         const WPassword = req.body.WPassword;
-        const WCitznumber = req.body.WCitznumber;
         const Wimage = req.file.path;
-        const WCitzimage = req.file.path;
         const Certifyimage = req.file.path;
         // console.log(us);
         // console.log(add); 
@@ -34,9 +32,7 @@ router.post('/worker/insert',  upload.single('Wimage','WCitzimage','Certifyimage
                 WSkills: WSkills,
                 WUsername: WUsername,
                 WPassword: hash,
-                WCitznumber: WCitznumber,
                 Wimage:"/Images/workerimage" + req.file.filename,
-                WCitzimage:"/Images/citzensipimage" + req.file.filename,
                 Certifyimage :"/Images/certificationimage" + req.file.filename
             })
             data.save()
