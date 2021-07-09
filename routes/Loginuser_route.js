@@ -85,6 +85,7 @@ router.post('/user/login', function (req, res) {
         })
 })
 
+//showing users
 router.get('/user/show', function (req, res) {
     // console.log("this is for showing data")
     // res.send("test show")

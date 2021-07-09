@@ -22,9 +22,9 @@ const User = mongoose.model('User',{
         required:true
     },
 
-    // Uimage:{
-    //     type: String
-    // },
+    Uimage:{
+        type: String
+    },
     UCitznumber:{
         type: String,
         required:true
