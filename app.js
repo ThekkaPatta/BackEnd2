@@ -11,7 +11,7 @@ const app = express();
 
 app.use(express.static("./Images"));
 app.use(express.json());
-app.use('/Images', express.static(__dirname + "/"))
+app.use('/Images', express.static(__dirname + "/Images"))
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(Loginuser_route);

@@ -7,7 +7,7 @@ const router = express.Router();
 const upload = require('../Middleware/Upload');
 const auth = require('../Middleware/Authenticate')
 
-router.post('/user/insert', /* upload.single('Uimage','Citzimage')*/ function (req, res) {
+router.post('/user/insert', upload.single('Uimage'), function (req, res) {
     console.log(req.body)
     const errors = validationResult(req);
 
@@ -19,9 +19,8 @@ router.post('/user/insert', /* upload.single('Uimage','Citzimage')*/ function (r
         const UPhoneNo = req.body.UPhoneNo;
         const UUsername = req.body.UUsername;
         const UPassword = req.body.UPassword;
-        const UCitznumber = req.body.UCitznumber;
-        // const Uimage = req.file.path;
-        // const UCitzimage = req.file.path;
+        const Uimage = req.file.path;
+        
         // console.log(us);
         // console.log(add); 
         bcryptjs.hash(UPassword, 10, function (err, hash) {
@@ -29,11 +28,10 @@ router.post('/user/insert', /* upload.single('Uimage','Citzimage')*/ function (r
                 UFullName: UFullName,
                 UAddress: UAddress,
                 UPhoneNo: UPhoneNo,
-                UCitznumber : UCitznumber,
                 UUsername: UUsername,
                 UPassword: hash,
-                // Uimage:"/Userimage" + req.file.filename,
-                // UCitzimage:"/Usercitzimage" + req.file.filename
+                Uimage:"/" + req.file.filename,
+                
             });
             data.save()
                 .then(function (result) {

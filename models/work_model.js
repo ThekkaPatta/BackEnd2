@@ -16,10 +16,10 @@ const Work = mongoose.model('Work',{
     Workdescription:{
         type : String,
         required:true
+    },
+    Wimage:{
+        type: String
     }
-    // Wimage:{
-    //     type: String
-    // }
 
 })
 module.exports = Work;

@@ -21,13 +21,8 @@ const User = mongoose.model('User',{
         type : String,
         required:true
     },
-
     Uimage:{
-        type: String
-    },
-    UCitznumber:{
         type: String,
-        required:true
     }
 })
 module.exports = User;
