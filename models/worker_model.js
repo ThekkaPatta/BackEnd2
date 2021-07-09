@@ -25,12 +25,17 @@ const Worker = mongoose.model('Worker',{
         type : String,
         required:true
     },
+
     Wimage:{
         type: String
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     Certifyimage:{
-        type: String,
-        required:true
+        type: String
     }
+    
 })
 module.exports = Worker;

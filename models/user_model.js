@@ -21,6 +21,7 @@ const User = mongoose.model('User',{
         type : String,
         required:true
     },
+<<<<<<< HEAD
 
     Uimage:{
         type: String
@@ -31,8 +32,10 @@ const User = mongoose.model('User',{
     },
     
     UCitznumber:{
+=======
+    Uimage:{
+>>>>>>> master
         type: String,
-        required:true
     }
 })
 module.exports = User;
