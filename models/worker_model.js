@@ -28,13 +28,6 @@ const Worker = mongoose.model('Worker',{
 
     Wimage:{
         type: String
-    },
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-    Certifyimage:{
-        type: String
     }
     
 })

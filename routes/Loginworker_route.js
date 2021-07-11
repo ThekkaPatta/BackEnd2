@@ -7,7 +7,7 @@ const router = express.Router();
 const upload = require('../Middleware/Upload');
 const auth = require('../Middleware/Authenticate')
 
-router.post('/worker/insert',  upload.array('Wimage','Certifyimage'), function (req, res) {
+router.post('/worker/insert',  upload.single('Wimage'), function (req, res) {
     console.log(req.body)
     const errors = validationResult(req);
 
@@ -21,35 +21,23 @@ router.post('/worker/insert',  upload.array('Wimage','Certifyimage'), function (
         const WUsername = req.body.WUsername;
         const WPassword = req.body.WPassword;
         const Wimage = req.file.path;
-<<<<<<< HEAD
-        const Certifyimage = req.file.path;
-        // console.log(us);
-        // console.log(add); 
-        bcryptjs.hash(Password, 10, function (err, hash) {
-=======
         // const Certifyimage = req.file.path;
    
         bcryptjs.hash(WPassword, 10, function (err, hash) {
->>>>>>> master
             const data = new Worker({
                 WFullName: WFullName,
                 WAddress: WAddress,
                 WPhoneNo: WPhoneNo,
                 WSkills: WSkills,
                 WUsername: WUsername,
-<<<<<<< HEAD
-                WPassword: hash,
-                Wimage:"/Images/workerimage" + req.file.filename,
-                Certifyimage :"/Images/certificationimage" + req.file.filename
-=======
                 WPassword: hash,                
                 Wimage:"/" + req.file.filename,
                 // Certifyimage:"/"+req.file.filename
                 
->>>>>>> master
             })
             data.save()
                 .then(function (result) {
+                    console.log(data);
                     res.status(201).json({ message: "Registration success !!!!" })
                 })// sucessess vayo ki vaena
                 .catch(function (err45) {

@@ -21,20 +21,7 @@ const User = mongoose.model('User',{
         type : String,
         required:true
     },
-<<<<<<< HEAD
-
     Uimage:{
-        type: String
-    },
-    UCitzimage:{
-        type: String,
-        required:true
-    },
-    
-    UCitznumber:{
-=======
-    Uimage:{
->>>>>>> master
         type: String,
     }
 })

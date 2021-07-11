@@ -7,11 +7,7 @@ const router = express.Router();
 const upload = require('../Middleware/Upload');
 const auth = require('../Middleware/Authenticate')
 
-<<<<<<< HEAD
-router.post('/user/insert',  upload.single('Uimage','Citzimage'), function (req, res) {
-=======
 router.post('/user/insert', upload.single('Uimage'), function (req, res) {
->>>>>>> master
     console.log(req.body)
     const errors = validationResult(req);
 
@@ -24,10 +20,7 @@ router.post('/user/insert', upload.single('Uimage'), function (req, res) {
         const UUsername = req.body.UUsername;
         const UPassword = req.body.UPassword;
         const Uimage = req.file.path;
-<<<<<<< HEAD
-=======
         
->>>>>>> master
         // console.log(us);
         // console.log(add); 
         bcryptjs.hash(UPassword, 10, function (err, hash) {
@@ -37,16 +30,12 @@ router.post('/user/insert', upload.single('Uimage'), function (req, res) {
                 UPhoneNo: UPhoneNo,
                 UUsername: UUsername,
                 UPassword: hash,
-<<<<<<< HEAD
-                Uimage:"/Userimage" + req.file.filename,
-                UCitzimage:"/Usercitzimage" + req.file.filename
-=======
                 Uimage:"/" + req.file.filename,
                 
->>>>>>> master
             });
             data.save()
                 .then(function (result) {
+                    console.log(data);
                     res.status(201).json({ message: "Registration success !!!!" })
                 })// sucessess vayo ki vaena
                 .catch(function (err45) {
