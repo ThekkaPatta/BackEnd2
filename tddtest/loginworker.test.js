@@ -1,5 +1,5 @@
 // use the path of your model
-const user = require('../models/user_model');
+const user = require('../models/worker_model');
 // const worker = require('../models/worker_model')
 const mongoose = require('mongoose');
 // use the new name of the database
@@ -14,16 +14,16 @@ afterAll(async () => {
  await mongoose.connection.close();
 });
 
-describe('Loginuser Test', () => {
+describe('Loginworker Test', () => {
 // the code below is for insert testing
- it('Loginuser testing anything', async () => {
- const User = {
-     "UUsername" :"agraj",
-     "UPassword" : "agraj"
+ it('Loginworker testing anything', async () => {
+ const worker = {
+     "WUsername" :"agraj",
+     "WPassword" : "agraj"
  
  }
  
- return user.findOne({User});
+ return user.findOne({worker});
  });
 })
 
